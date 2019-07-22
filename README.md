@@ -9,7 +9,7 @@ React Native Signature Component based Canvas for Android &amp;&amp; IOS &amp;&a
 - Tested with RN 0.50
 - Core use [signature_pad.js](https://github.com/szimek/signature_pad)
 - Only depend on react and react native
-- Generates a base64 encoded png image of the signature
+- Generates a base64 encoded ~png~ JPEG image of the signature
 
 ## Installation
 
