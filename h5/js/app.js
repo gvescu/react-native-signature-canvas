@@ -21,7 +21,8 @@ const content = `
     window.onresize = resizeCanvas;
     resizeCanvas();
     
-    signaturePad = new SignaturePad(canvas);
+    signaturePad = new SignaturePad(canvas, { backgroundColor: 'rgb(255,255,255)', penColor: 'rgb(0,0,0)' });
+    
     
     clearButton.addEventListener("click", function (event) {
         signaturePad.clear();
@@ -31,7 +32,11 @@ const content = `
         if (signaturePad.isEmpty()) {
             window.postMessage("EMPTY");
         } else {
-            window.postMessage(signaturePad.toDataURL());
+            var ctx = canvas.getContext('2d');
+            ctx.globalCompositeOperation = 'destination-over';
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            window.postMessage(signaturePad.toDataURL("image/jpeg", 0.8));
         }
     });
 `;
